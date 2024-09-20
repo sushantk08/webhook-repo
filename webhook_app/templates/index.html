@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Webhook Events</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>GitHub Webhook Events</h1>
+    <ul>
+        {% for event in events %}
+            <li>
+                <span class="author">{{ event.author }}</span>
+                <div class="action">
+                    {% if event.action == 'pushed' %}
+                        pushed to <span class="branch">{{ event.to_branch }}</span>
+                    {% elif event.action == 'submitted a pull request' %}
+                        submitted a pull request from <span class="branch">{{ event.from_branch }}</span> to <span class="branch">{{ event.to_branch }}</span>
+                    {% elif event.action == 'merged branch' %}
+                        merged branch <span class="branch">{{ event.from_branch }}</span> to <span class="branch">{{ event.to_branch }}</span>
+                    {% endif %}
+                </div>
+                <span class="timestamp">on {{ event.timestamp }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
