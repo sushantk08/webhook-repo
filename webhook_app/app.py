@@ -17,7 +17,6 @@ def index():
 def webhook():
     if request.method == 'POST':
         data = request.json
-        # Parse the event type
         event_type = request.headers.get('X-GitHub-Event', 'ping')
 
         if event_type == 'push':
