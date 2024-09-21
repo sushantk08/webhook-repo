@@ -1,0 +1,1 @@
+MONGODB_URI = "mongodb+srv://kulkarnisushant87:test234!!@actions.yoer5.mongodb.net/?retryWrites=true&w=majority&appName=actions"

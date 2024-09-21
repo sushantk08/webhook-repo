@@ -1,9 +1,10 @@
 from flask import Flask,request,jsonify, render_template
 from pymongo.mongo_client import MongoClient
 from datetime import datetime
+import config
 
 app=Flask(__name__)
-client=MongoClient("mongodb+srv://kulkarnisushant87:test234!!@actions.yoer5.mongodb.net/?retryWrites=true&w=majority&appName=actions")
+client=MongoClient(config.MONGODB_URI)
 db = client.github_events
 collection = db.events
 
